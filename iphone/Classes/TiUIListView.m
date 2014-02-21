@@ -1232,6 +1232,9 @@ static TiViewProxy * FindViewProxyWithBindIdContainingPoint(UIView *view, CGPoin
 
     cell.dataItem = item;
     cell.proxy.indexPath = realIndexPath;
+    
+    //Let the cell configure its background
+    [(TiUIListItem*)cell configureCellBackground];
     return cell;
 }
 
@@ -1277,8 +1280,6 @@ static TiViewProxy * FindViewProxyWithBindIdContainingPoint(UIView *view, CGPoin
     if (searchActive || (tableView != _tableView)) {
         return;
     }
-    //Let the cell configure its background
-    [(TiUIListItem*)cell configureCellBackground];
     
     //Tell the proxy about the cell to be displayed
     [self.listViewProxy willDisplayCell:indexPath];
